@@ -4,7 +4,7 @@
 
 ## Evaluació:
 
-|Exam Parcial| Exam Final| Laboratori|
+|Examen parcial| Examen final| Laboratori|
 |------------|-----------|------------|
 |25%		 |50%        | 25%        |
 
