@@ -8,4 +8,4 @@
 |------------|-----------|------------|
 |25%		 |50%        | 25%        |
 
-`+ 1 punt extra pel laboratori`
+`+ punt extra pel laboratori`
