@@ -1,5 +1,7 @@
 # IDI
-> Professora: Marta Fairén
+> Teoria: Marta Fairén
+>
+> Laboratori: Âlex Ríos
 
 # Introducció:
 ```
