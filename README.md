@@ -1,6 +1,8 @@
 # IDI - Interacció i Disseny d'Interfícies
 
-> Marta Fairén
+> Teoria: Marta Fairén
+>
+> Laboratori: Àlex Ríos
 
 ## Evaluació:
 
