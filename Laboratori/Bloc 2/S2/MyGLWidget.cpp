@@ -117,7 +117,7 @@ void MyGLWidget::createBuffers() {
   // TERRA
   // Vèrtexs del terra
 
-  
+
   glm::vec3 v_Terra[6] = {
     glm::vec3(-2.5, 0, 2.5),
     glm::vec3(-2.5, 0, -2.5),
@@ -132,7 +132,7 @@ void MyGLWidget::createBuffers() {
     glm::vec3(0,1,0),
     glm::vec3(0,0,1),
     glm::vec3(0,0,1),
-    glm::vec3(0,1,0),
+    glm::vec3(1,1,0),
     glm::vec3(1,0,0),
 
   };
@@ -274,8 +274,7 @@ void MyGLWidget::iniCamera(){
     // Apliquem les transformacions
     modelTransform();
 
-    // Posem la caixa contenidora a mà:
-
+    // Posem la caixa contenidora de l'escena a mà:
     EscenaMin = {-2.5,0,-2.5};
     EscenaMax = {2.5,4,2.5};
 
