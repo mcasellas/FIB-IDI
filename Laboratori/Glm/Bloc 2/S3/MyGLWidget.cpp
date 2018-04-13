@@ -57,8 +57,10 @@ void MyGLWidget::resizeGL (int w, int h) {
 
   rav = double(width())/double(height()); // Obtenim la relació d'aspecte del viewport
   raw = rav; // igualem la relació d'aspecte
-  FOV = ang_ini;
+
   if (w < h) FOV = 2.0*atan(tan(ang_ini)/rav);
+  else FOV = 2*ang_ini;
+  
   projectTransform();
 
 }
@@ -142,17 +144,13 @@ void MyGLWidget::createBuffers() {
 
   // TERRA
   // Vèrtexs del terra
-  glm::vec3 v_Terra[9] = {
+  glm::vec3 v_Terra[6] = {
     glm::vec3(-2.5, 0, 2.5),
     glm::vec3(-2.5, 0, -2.5),
     glm::vec3(2.5, 0,-2.5),
     glm::vec3(2.5, 0, -2.5),
     glm::vec3(2.5, 0, 2.5),
     glm::vec3(-2.5,0,2.5),
-
-    glm::vec3(-2.5, 0, 2.5),
-    glm::vec3(-2.5, 0, -2.5),
-    glm::vec3(0.0, d,-0.0)
   };
   // Colors del terra
   glm::vec3 c_Terra[6] = {

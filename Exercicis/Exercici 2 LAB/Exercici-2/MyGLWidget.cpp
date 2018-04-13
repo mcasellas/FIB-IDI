@@ -2,6 +2,7 @@
 
 #include <iostream>
 
+
 MyGLWidget::MyGLWidget (QWidget* parent) : QOpenGLWidget(parent), program(NULL)
 {
   setFocusPolicy(Qt::StrongFocus);  // per rebre events de teclat
@@ -126,13 +127,11 @@ void MyGLWidget::iniCamera() {
 // Canviar a 3a persona
 void MyGLWidget::Camera3aPersona () {
 
-  glm::vec3 aux = VRP;
-  VRP = VRP_guardat;
-  VRP_guardat = aux;
+  VRP_guardat = VRP;
+  OBS_guardat = OBS;
 
-  aux = OBS;
-  OBS = OBS_guardat;
-  OBS_guardat = aux;
+  OBS = glm::vec3(0, 0.5, 8);
+  VRP = glm::vec3(0, 0.5, 0);
 
   PrimeraPersona = false;
 
@@ -148,13 +147,10 @@ void MyGLWidget::Camera3aPersona () {
 // Canviar a 1a persona
 void MyGLWidget::Camera1aPersona () {
 
-  glm::vec3 aux = VRP;
-  VRP = VRP_guardat;
-  VRP_guardat = aux;
 
-  aux = OBS;
+  VRP = VRP_guardat;
   OBS = OBS_guardat;
-  OBS_guardat = aux;
+
 
   PrimeraPersona = true;
 
@@ -182,21 +178,14 @@ void MyGLWidget::moure (bool endavant) {
 }
 
 void MyGLWidget::rotar (bool dreta) {
-  int sentit = -1;
-  if (not dreta) sentit = 1;
+  double sentit = 1.0;
+  if (not dreta) sentit = -1.0;
 
-  glm::vec3 vector (VRP.x-OBS.x,0.0,VRP.z-OBS.z); // Obtenim el vector director:
-  /*
-  vector = glm::vec3(-vector.z,0.0, vector.x); // Obtenim el vector normal
-  vector = vector/sqrt(vector.x*vector.x+vector.z*vector.z); // Normalitzem
-  */
+  glm::detail::tvec3<double,glm::highp> vector (VRP.x-OBS.x,0.0,VRP.z-OBS.z); // Obtenim el vector director:
 
-  vector = glm::rotate(0.1f, glm::vec3(0.0,1.0,0.0));
-  std::cout << vector.x << ' ' << vector.z << std::endl;
+  vector = glm::rotateY(vector,sentit*0.1);
 
-  float dist = 2*(sin(0.1/2) * glm::distance(OBS,VRP));
-
-  VRP += sentit*dist*vector; // Movem VRP
+  VRP += vector; // Movem VRP
 
   viewTransform ();
 }
