@@ -28,6 +28,19 @@ void MyGLWidget::initializeGL ()
 
   iniEscena();
   iniCamera();
+
+  posicioFocus();
+  colorFocus();
+}
+
+void MyGLWidget::posicioFocus() {
+    glm::vec3 posF = glm::vec3(1,1,1);
+    glUniform3fv (posFocusLoc, 1, &posF[0]);
+}
+
+void MyGLWidget::colorFocus() {
+    glm::vec3 colF = glm::vec3(0.8, 0.8, 0.8);
+    glUniform3fv (colFocusLoc, 1, &colF[0]);
 }
 
 void MyGLWidget::iniEscena ()
@@ -166,7 +179,7 @@ void MyGLWidget::createBuffersTerraIParet ()
   glm::vec3 amb(0,0,1);
   glm::vec3 diff(0.0,0,1);
   glm::vec3 spec(1,1,1);
-  float shin = 100;
+  float shin = 10000;
 
   // Fem que aquest material afecti a tots els vèrtexs per igual
   glm::vec3 matambterra[12] = {
@@ -269,6 +282,10 @@ void MyGLWidget::carregaShaders()
   transLoc = glGetUniformLocation (program->programId(), "TG");
   projLoc = glGetUniformLocation (program->programId(), "proj");
   viewLoc = glGetUniformLocation (program->programId(), "view");
+
+  // Uniforms del focus
+  posFocusLoc = glGetUniformLocation (program->programId(), "posFocus");
+  colFocusLoc = glGetUniformLocation (program->programId(), "colFocus");
 }
 
 void MyGLWidget::modelTransformPatricio ()
