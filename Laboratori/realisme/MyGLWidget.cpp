@@ -28,23 +28,6 @@ void MyGLWidget::initializeGL ()
 
   iniEscena();
   iniCamera();
-  inicialitzarFocus();
-}
-
-void MyGLWidget::inicialitzarFocus() {
-
-    cFocus = glm::vec3(0.8, 0.8, 0.8);
-    glUniform3fv (colFocusLoc, 1, &cFocus[0]);
-
-    pFocus = glm::vec3(1,0,1);
-    posFocus();
-
-}
-
-void MyGLWidget::posFocus() {
-    //glm::vec4 conv = (View*glm::vec4(pFocus, 1.0));
-    //pFocus = glm::vec3(conv.x,conv.y,conv.z);
-    glUniform3fv (posFocusLoc, 1, &pFocus[0]);
 }
 
 void MyGLWidget::iniEscena ()
@@ -180,8 +163,8 @@ void MyGLWidget::createBuffersTerraIParet ()
   };
 
   // Definim el material del terra
-  glm::vec3 amb(0.2,0,0.2);
-  glm::vec3 diff(0.0,0,1.0);
+  glm::vec3 amb(0,0,1);
+  glm::vec3 diff(0.0,0,1);
   glm::vec3 spec(1,1,1);
   float shin = 100;
 
@@ -286,13 +269,11 @@ void MyGLWidget::carregaShaders()
   transLoc = glGetUniformLocation (program->programId(), "TG");
   projLoc = glGetUniformLocation (program->programId(), "proj");
   viewLoc = glGetUniformLocation (program->programId(), "view");
-  colFocusLoc = glGetUniformLocation (program->programId(), "colFocus");
-  posFocusLoc = glGetUniformLocation (program->programId(), "posFocus");
 }
 
 void MyGLWidget::modelTransformPatricio ()
 {
-  TG = glm::mat4(1.f);  // Matriu de transformació
+  glm::mat4 TG(1.f);  // Matriu de transformació
   TG = glm::scale(TG, glm::vec3(escala, escala, escala));
   TG = glm::translate(TG, -centrePatr);
 
@@ -301,8 +282,8 @@ void MyGLWidget::modelTransformPatricio ()
 
 void MyGLWidget::modelTransformTerra ()
 {
-    TG = glm::mat4(1.f);  // Matriu de transformació
-    glUniformMatrix4fv (transLoc, 1, GL_FALSE, &TG[0][0]);
+  glm::mat4 TG(1.f);  // Matriu de transformació
+  glUniformMatrix4fv (transLoc, 1, GL_FALSE, &TG[0][0]);
 }
 
 void MyGLWidget::projectTransform ()
@@ -318,12 +299,11 @@ void MyGLWidget::projectTransform ()
 
 void MyGLWidget::viewTransform ()
 {
-
+  glm::mat4 View;  // Matriu de posició i orientació
   View = glm::translate(glm::mat4(1.f), glm::vec3(0, 0, -2*radiEsc));
   View = glm::rotate(View, -angleY, glm::vec3(0, 1, 0));
 
   glUniformMatrix4fv (viewLoc, 1, GL_FALSE, &View[0][0]);
-
 }
 
 void MyGLWidget::calculaCapsaModel ()
@@ -361,19 +341,6 @@ void MyGLWidget::keyPressEvent(QKeyEvent* event)
       projectTransform ();
       break;
     }
-
-    case Qt::Key_K: {
-        pFocus.x -= 0.1;
-        posFocus();
-      break;
-    }
-
-    case Qt::Key_L: {
-        pFocus.x += 0.1;
-        posFocus();
-      break;
-    }
-
     default: event->ignore(); break;
   }
   update();

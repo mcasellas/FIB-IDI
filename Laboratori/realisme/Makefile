@@ -15,7 +15,7 @@ CXX           = /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefau
 DEFINES       = -DQT_NO_DEBUG -DQT_OPENGL_LIB -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_CORE_LIB
 CFLAGS        = -pipe -O2 $(EXPORT_ARCH_ARGS) -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk -mmacosx-version-min=10.10 -Wall -W -fPIC $(DEFINES)
 CXXFLAGS      = -pipe -stdlib=libc++ -O2 -std=gnu++11 $(EXPORT_ARCH_ARGS) -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk -mmacosx-version-min=10.10 -Wall -W -fPIC $(DEFINES)
-INCPATH       = -I. -I/usr/include/glm -IModel -I/usr/local/Cellar/qt/5.10.1/lib/QtOpenGL.framework/Headers -I/usr/local/Cellar/qt/5.10.1/lib/QtWidgets.framework/Headers -I/usr/local/Cellar/qt/5.10.1/lib/QtGui.framework/Headers -I/usr/local/Cellar/qt/5.10.1/lib/QtCore.framework/Headers -I. -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/System/Library/Frameworks/OpenGL.framework/Headers -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/System/Library/Frameworks/AGL.framework/Headers -I. -I/usr/local/Cellar/qt/5.10.1/mkspecs/macx-clang -F/usr/local/Cellar/qt/5.10.1/lib
+INCPATH       = -I. -Iglm -IModel -I/usr/local/Cellar/qt/5.10.1/lib/QtOpenGL.framework/Headers -I/usr/local/Cellar/qt/5.10.1/lib/QtWidgets.framework/Headers -I/usr/local/Cellar/qt/5.10.1/lib/QtGui.framework/Headers -I/usr/local/Cellar/qt/5.10.1/lib/QtCore.framework/Headers -I. -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/System/Library/Frameworks/OpenGL.framework/Headers -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/System/Library/Frameworks/AGL.framework/Headers -I. -I/usr/local/Cellar/qt/5.10.1/mkspecs/macx-clang -F/usr/local/Cellar/qt/5.10.1/lib
 QMAKE         = /usr/local/bin/qmake
 DEL_FILE      = rm -f
 CHK_DIR_EXISTS= test -d
@@ -35,7 +35,7 @@ MOVE          = mv -f
 TAR           = tar -cf
 COMPRESS      = gzip -9f
 DISTNAME      = Bloc3_Exemple1.0.0
-DISTDIR = /Users/marccasellas/GitHub/FIB-IDI/Laboratori/bloc-3/.tmp/Bloc3_Exemple1.0.0
+DISTDIR = /Users/marccasellas/GitHub/FIB-IDI/Laboratori/realisme/.tmp/Bloc3_Exemple1.0.0
 LINK          = /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++
 LFLAGS        = -stdlib=libc++ -headerpad_max_install_names $(EXPORT_ARCH_ARGS) -Wl,-syslibroot,/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk -mmacosx-version-min=10.10 -Wl,-rpath,@executable_path/Frameworks
 LIBS          = $(SUBLIBS) -F/usr/local/Cellar/qt/5.10.1/lib -framework QtOpenGL -framework QtWidgets -framework QtGui -framework QtCore -framework DiskArbitration -framework IOKit -framework OpenGL -framework AGL 
@@ -219,6 +219,7 @@ DIST          = /usr/local/Cellar/qt/5.10.1/mkspecs/features/spec_pre.prf \
 		/usr/local/Cellar/qt/5.10.1/mkspecs/features/qt_config.prf \
 		/usr/local/Cellar/qt/5.10.1/mkspecs/macx-clang/qmake.conf \
 		/usr/local/Cellar/qt/5.10.1/mkspecs/features/spec_post.prf \
+		.qmake.stash \
 		/usr/local/Cellar/qt/5.10.1/mkspecs/features/exclusive_builds.prf \
 		/usr/local/Cellar/qt/5.10.1/mkspecs/features/mac/sdk.prf \
 		/usr/local/Cellar/qt/5.10.1/mkspecs/features/toolchain.prf \
@@ -425,6 +426,7 @@ Makefile: Bloc3_Exemple.pro /usr/local/Cellar/qt/5.10.1/mkspecs/macx-clang/qmake
 		/usr/local/Cellar/qt/5.10.1/mkspecs/features/qt_config.prf \
 		/usr/local/Cellar/qt/5.10.1/mkspecs/macx-clang/qmake.conf \
 		/usr/local/Cellar/qt/5.10.1/mkspecs/features/spec_post.prf \
+		.qmake.stash \
 		/usr/local/Cellar/qt/5.10.1/mkspecs/features/exclusive_builds.prf \
 		/usr/local/Cellar/qt/5.10.1/mkspecs/features/mac/sdk.prf \
 		/usr/local/Cellar/qt/5.10.1/mkspecs/features/toolchain.prf \
@@ -615,6 +617,7 @@ Makefile: Bloc3_Exemple.pro /usr/local/Cellar/qt/5.10.1/mkspecs/macx-clang/qmake
 /usr/local/Cellar/qt/5.10.1/mkspecs/features/qt_config.prf:
 /usr/local/Cellar/qt/5.10.1/mkspecs/macx-clang/qmake.conf:
 /usr/local/Cellar/qt/5.10.1/mkspecs/features/spec_post.prf:
+.qmake.stash:
 /usr/local/Cellar/qt/5.10.1/mkspecs/features/exclusive_builds.prf:
 /usr/local/Cellar/qt/5.10.1/mkspecs/features/mac/sdk.prf:
 /usr/local/Cellar/qt/5.10.1/mkspecs/features/toolchain.prf:
@@ -688,6 +691,7 @@ clean: compiler_clean
 
 distclean: clean 
 	-$(DEL_FILE) -r Bloc3_Exemple.app
+	-$(DEL_FILE) .qmake.stash
 	-$(DEL_FILE) Makefile
 
 
@@ -713,10 +717,102 @@ compiler_moc_header_make_all: moc_MyForm.cpp moc_MyGLWidget.cpp
 compiler_moc_header_clean:
 	-$(DEL_FILE) moc_MyForm.cpp moc_MyGLWidget.cpp
 moc_MyForm.cpp: ui_MyForm.h \
+		MyGLWidget.h \
+		/usr/local/Cellar/qt/5.10.1/lib/QtGui.framework/Headers/QOpenGLFunctions_3_3_Core \
+		/usr/local/Cellar/qt/5.10.1/lib/QtGui.framework/Headers/qopenglfunctions_3_3_core.h \
+		/usr/local/Cellar/qt/5.10.1/lib/QtWidgets.framework/Headers/QOpenGLWidget \
+		/usr/local/Cellar/qt/5.10.1/lib/QtWidgets.framework/Headers/qopenglwidget.h \
+		/usr/local/Cellar/qt/5.10.1/lib/QtGui.framework/Headers/QOpenGLShader \
+		/usr/local/Cellar/qt/5.10.1/lib/QtGui.framework/Headers/qopenglshaderprogram.h \
+		/usr/local/Cellar/qt/5.10.1/lib/QtGui.framework/Headers/QOpenGLShaderProgram \
+		/usr/local/Cellar/qt/5.10.1/lib/QtGui.framework/Headers/QKeyEvent \
+		/usr/local/Cellar/qt/5.10.1/lib/QtGui.framework/Headers/qevent.h \
+		/usr/local/Cellar/qt/5.10.1/lib/QtGui.framework/Headers/QMouseEvent \
+		glm/glm.hpp \
+		glm/detail/_fixes.hpp \
+		glm/fwd.hpp \
+		glm/detail/type_int.hpp \
+		glm/detail/setup.hpp \
+		glm/detail/type_float.hpp \
+		glm/detail/type_vec.hpp \
+		glm/detail/precision.hpp \
+		glm/detail/type_mat.hpp \
+		glm/vec2.hpp \
+		glm/detail/type_vec2.hpp \
+		glm/detail/_swizzle.hpp \
+		glm/detail/_swizzle_func.hpp \
+		glm/detail/type_vec2.inl \
+		glm/vec3.hpp \
+		glm/detail/type_vec3.hpp \
+		glm/detail/type_vec3.inl \
+		glm/vec4.hpp \
+		glm/detail/type_vec4.hpp \
+		glm/detail/type_vec4.inl \
+		glm/mat2x2.hpp \
+		glm/detail/type_mat2x2.hpp \
+		glm/detail/type_mat2x2.inl \
+		glm/mat2x3.hpp \
+		glm/detail/type_mat2x3.hpp \
+		glm/detail/type_mat2x3.inl \
+		glm/mat2x4.hpp \
+		glm/detail/type_mat2x4.hpp \
+		glm/detail/type_mat2x4.inl \
+		glm/mat3x2.hpp \
+		glm/detail/type_mat3x2.hpp \
+		glm/detail/type_mat3x2.inl \
+		glm/mat3x3.hpp \
+		glm/detail/type_mat3x3.hpp \
+		glm/detail/type_mat3x3.inl \
+		glm/mat3x4.hpp \
+		glm/detail/type_mat3x4.hpp \
+		glm/detail/type_mat3x4.inl \
+		glm/mat4x2.hpp \
+		glm/detail/type_mat4x2.hpp \
+		glm/detail/type_mat4x2.inl \
+		glm/mat4x3.hpp \
+		glm/detail/type_mat4x3.hpp \
+		glm/detail/type_mat4x3.inl \
+		glm/mat4x4.hpp \
+		glm/detail/type_mat4x4.hpp \
+		glm/detail/type_mat4x4.inl \
+		glm/trigonometric.hpp \
+		glm/detail/func_trigonometric.hpp \
+		glm/detail/func_trigonometric.inl \
+		glm/detail/_vectorize.hpp \
+		glm/detail/type_vec1.hpp \
+		glm/detail/type_vec1.inl \
+		glm/exponential.hpp \
+		glm/detail/func_exponential.hpp \
+		glm/detail/func_exponential.inl \
+		glm/detail/func_vector_relational.hpp \
+		glm/detail/func_vector_relational.inl \
+		glm/common.hpp \
+		glm/detail/func_common.hpp \
+		glm/detail/func_common.inl \
+		glm/packing.hpp \
+		glm/detail/func_packing.hpp \
+		glm/detail/func_packing.inl \
+		glm/detail/type_half.hpp \
+		glm/detail/type_half.inl \
+		glm/geometric.hpp \
+		glm/detail/func_geometric.hpp \
+		glm/detail/func_geometric.inl \
+		glm/matrix.hpp \
+		glm/detail/func_matrix.hpp \
+		glm/detail/func_matrix.inl \
+		glm/vector_relational.hpp \
+		glm/integer.hpp \
+		glm/detail/func_integer.hpp \
+		glm/detail/func_integer.inl \
+		glm/gtc/matrix_transform.hpp \
+		glm/gtc/constants.hpp \
+		glm/gtc/constants.inl \
+		glm/gtc/matrix_transform.inl \
+		Model/model.h \
 		MyForm.h \
 		moc_predefs.h \
 		/usr/local/Cellar/qt/5.10.1/bin/moc
-	/usr/local/Cellar/qt/5.10.1/bin/moc $(DEFINES) --include ./moc_predefs.h -I/usr/local/Cellar/qt/5.10.1/mkspecs/macx-clang -I/Users/marccasellas/GitHub/FIB-IDI/Laboratori/bloc-3 -I/usr/include/glm -I/Users/marccasellas/GitHub/FIB-IDI/Laboratori/bloc-3/Model -I/usr/local/Cellar/qt/5.10.1/lib/QtOpenGL.framework/Headers -I/usr/local/Cellar/qt/5.10.1/lib/QtWidgets.framework/Headers -I/usr/local/Cellar/qt/5.10.1/lib/QtGui.framework/Headers -I/usr/local/Cellar/qt/5.10.1/lib/QtCore.framework/Headers -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/9.1.0/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/usr/include -F/usr/local/Cellar/qt/5.10.1/lib MyForm.h -o moc_MyForm.cpp
+	/usr/local/Cellar/qt/5.10.1/bin/moc $(DEFINES) --include ./moc_predefs.h -I/usr/local/Cellar/qt/5.10.1/mkspecs/macx-clang -I/Users/marccasellas/GitHub/FIB-IDI/Laboratori/realisme -I/Users/marccasellas/GitHub/FIB-IDI/Laboratori/realisme/glm -I/Users/marccasellas/GitHub/FIB-IDI/Laboratori/realisme/Model -I/usr/local/Cellar/qt/5.10.1/lib/QtOpenGL.framework/Headers -I/usr/local/Cellar/qt/5.10.1/lib/QtWidgets.framework/Headers -I/usr/local/Cellar/qt/5.10.1/lib/QtGui.framework/Headers -I/usr/local/Cellar/qt/5.10.1/lib/QtCore.framework/Headers -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/9.1.0/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/usr/include -F/usr/local/Cellar/qt/5.10.1/lib MyForm.h -o moc_MyForm.cpp
 
 moc_MyGLWidget.cpp: /usr/local/Cellar/qt/5.10.1/lib/QtGui.framework/Headers/QOpenGLFunctions_3_3_Core \
 		/usr/local/Cellar/qt/5.10.1/lib/QtGui.framework/Headers/qopenglfunctions_3_3_core.h \
@@ -812,7 +908,7 @@ moc_MyGLWidget.cpp: /usr/local/Cellar/qt/5.10.1/lib/QtGui.framework/Headers/QOpe
 		MyGLWidget.h \
 		moc_predefs.h \
 		/usr/local/Cellar/qt/5.10.1/bin/moc
-	/usr/local/Cellar/qt/5.10.1/bin/moc $(DEFINES) --include ./moc_predefs.h -I/usr/local/Cellar/qt/5.10.1/mkspecs/macx-clang -I/Users/marccasellas/GitHub/FIB-IDI/Laboratori/bloc-3 -I/usr/include/glm -I/Users/marccasellas/GitHub/FIB-IDI/Laboratori/bloc-3/Model -I/usr/local/Cellar/qt/5.10.1/lib/QtOpenGL.framework/Headers -I/usr/local/Cellar/qt/5.10.1/lib/QtWidgets.framework/Headers -I/usr/local/Cellar/qt/5.10.1/lib/QtGui.framework/Headers -I/usr/local/Cellar/qt/5.10.1/lib/QtCore.framework/Headers -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/9.1.0/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/usr/include -F/usr/local/Cellar/qt/5.10.1/lib MyGLWidget.h -o moc_MyGLWidget.cpp
+	/usr/local/Cellar/qt/5.10.1/bin/moc $(DEFINES) --include ./moc_predefs.h -I/usr/local/Cellar/qt/5.10.1/mkspecs/macx-clang -I/Users/marccasellas/GitHub/FIB-IDI/Laboratori/realisme -I/Users/marccasellas/GitHub/FIB-IDI/Laboratori/realisme/glm -I/Users/marccasellas/GitHub/FIB-IDI/Laboratori/realisme/Model -I/usr/local/Cellar/qt/5.10.1/lib/QtOpenGL.framework/Headers -I/usr/local/Cellar/qt/5.10.1/lib/QtWidgets.framework/Headers -I/usr/local/Cellar/qt/5.10.1/lib/QtGui.framework/Headers -I/usr/local/Cellar/qt/5.10.1/lib/QtCore.framework/Headers -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/9.1.0/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/usr/include -F/usr/local/Cellar/qt/5.10.1/lib MyGLWidget.h -o moc_MyGLWidget.cpp
 
 compiler_moc_objc_header_make_all:
 compiler_moc_objc_header_clean:
@@ -932,11 +1028,195 @@ compiler_clean: compiler_moc_predefs_clean compiler_moc_header_clean compiler_ui
 main.o: main.cpp /usr/local/Cellar/qt/5.10.1/lib/QtWidgets.framework/Headers/QApplication \
 		/usr/local/Cellar/qt/5.10.1/lib/QtWidgets.framework/Headers/qapplication.h \
 		MyForm.h \
-		ui_MyForm.h
+		ui_MyForm.h \
+		MyGLWidget.h \
+		/usr/local/Cellar/qt/5.10.1/lib/QtGui.framework/Headers/QOpenGLFunctions_3_3_Core \
+		/usr/local/Cellar/qt/5.10.1/lib/QtGui.framework/Headers/qopenglfunctions_3_3_core.h \
+		/usr/local/Cellar/qt/5.10.1/lib/QtWidgets.framework/Headers/QOpenGLWidget \
+		/usr/local/Cellar/qt/5.10.1/lib/QtWidgets.framework/Headers/qopenglwidget.h \
+		/usr/local/Cellar/qt/5.10.1/lib/QtGui.framework/Headers/QOpenGLShader \
+		/usr/local/Cellar/qt/5.10.1/lib/QtGui.framework/Headers/qopenglshaderprogram.h \
+		/usr/local/Cellar/qt/5.10.1/lib/QtGui.framework/Headers/QOpenGLShaderProgram \
+		/usr/local/Cellar/qt/5.10.1/lib/QtGui.framework/Headers/QKeyEvent \
+		/usr/local/Cellar/qt/5.10.1/lib/QtGui.framework/Headers/qevent.h \
+		/usr/local/Cellar/qt/5.10.1/lib/QtGui.framework/Headers/QMouseEvent \
+		glm/glm.hpp \
+		glm/detail/_fixes.hpp \
+		glm/fwd.hpp \
+		glm/detail/type_int.hpp \
+		glm/detail/setup.hpp \
+		glm/detail/type_float.hpp \
+		glm/detail/type_vec.hpp \
+		glm/detail/precision.hpp \
+		glm/detail/type_mat.hpp \
+		glm/vec2.hpp \
+		glm/detail/type_vec2.hpp \
+		glm/detail/_swizzle.hpp \
+		glm/detail/_swizzle_func.hpp \
+		glm/detail/type_vec2.inl \
+		glm/vec3.hpp \
+		glm/detail/type_vec3.hpp \
+		glm/detail/type_vec3.inl \
+		glm/vec4.hpp \
+		glm/detail/type_vec4.hpp \
+		glm/detail/type_vec4.inl \
+		glm/mat2x2.hpp \
+		glm/detail/type_mat2x2.hpp \
+		glm/detail/type_mat2x2.inl \
+		glm/mat2x3.hpp \
+		glm/detail/type_mat2x3.hpp \
+		glm/detail/type_mat2x3.inl \
+		glm/mat2x4.hpp \
+		glm/detail/type_mat2x4.hpp \
+		glm/detail/type_mat2x4.inl \
+		glm/mat3x2.hpp \
+		glm/detail/type_mat3x2.hpp \
+		glm/detail/type_mat3x2.inl \
+		glm/mat3x3.hpp \
+		glm/detail/type_mat3x3.hpp \
+		glm/detail/type_mat3x3.inl \
+		glm/mat3x4.hpp \
+		glm/detail/type_mat3x4.hpp \
+		glm/detail/type_mat3x4.inl \
+		glm/mat4x2.hpp \
+		glm/detail/type_mat4x2.hpp \
+		glm/detail/type_mat4x2.inl \
+		glm/mat4x3.hpp \
+		glm/detail/type_mat4x3.hpp \
+		glm/detail/type_mat4x3.inl \
+		glm/mat4x4.hpp \
+		glm/detail/type_mat4x4.hpp \
+		glm/detail/type_mat4x4.inl \
+		glm/trigonometric.hpp \
+		glm/detail/func_trigonometric.hpp \
+		glm/detail/func_trigonometric.inl \
+		glm/detail/_vectorize.hpp \
+		glm/detail/type_vec1.hpp \
+		glm/detail/type_vec1.inl \
+		glm/exponential.hpp \
+		glm/detail/func_exponential.hpp \
+		glm/detail/func_exponential.inl \
+		glm/detail/func_vector_relational.hpp \
+		glm/detail/func_vector_relational.inl \
+		glm/common.hpp \
+		glm/detail/func_common.hpp \
+		glm/detail/func_common.inl \
+		glm/packing.hpp \
+		glm/detail/func_packing.hpp \
+		glm/detail/func_packing.inl \
+		glm/detail/type_half.hpp \
+		glm/detail/type_half.inl \
+		glm/geometric.hpp \
+		glm/detail/func_geometric.hpp \
+		glm/detail/func_geometric.inl \
+		glm/matrix.hpp \
+		glm/detail/func_matrix.hpp \
+		glm/detail/func_matrix.inl \
+		glm/vector_relational.hpp \
+		glm/integer.hpp \
+		glm/detail/func_integer.hpp \
+		glm/detail/func_integer.inl \
+		glm/gtc/matrix_transform.hpp \
+		glm/gtc/constants.hpp \
+		glm/gtc/constants.inl \
+		glm/gtc/matrix_transform.inl \
+		Model/model.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o main.cpp
 
 MyForm.o: MyForm.cpp MyForm.h \
-		ui_MyForm.h
+		ui_MyForm.h \
+		MyGLWidget.h \
+		/usr/local/Cellar/qt/5.10.1/lib/QtGui.framework/Headers/QOpenGLFunctions_3_3_Core \
+		/usr/local/Cellar/qt/5.10.1/lib/QtGui.framework/Headers/qopenglfunctions_3_3_core.h \
+		/usr/local/Cellar/qt/5.10.1/lib/QtWidgets.framework/Headers/QOpenGLWidget \
+		/usr/local/Cellar/qt/5.10.1/lib/QtWidgets.framework/Headers/qopenglwidget.h \
+		/usr/local/Cellar/qt/5.10.1/lib/QtGui.framework/Headers/QOpenGLShader \
+		/usr/local/Cellar/qt/5.10.1/lib/QtGui.framework/Headers/qopenglshaderprogram.h \
+		/usr/local/Cellar/qt/5.10.1/lib/QtGui.framework/Headers/QOpenGLShaderProgram \
+		/usr/local/Cellar/qt/5.10.1/lib/QtGui.framework/Headers/QKeyEvent \
+		/usr/local/Cellar/qt/5.10.1/lib/QtGui.framework/Headers/qevent.h \
+		/usr/local/Cellar/qt/5.10.1/lib/QtGui.framework/Headers/QMouseEvent \
+		glm/glm.hpp \
+		glm/detail/_fixes.hpp \
+		glm/fwd.hpp \
+		glm/detail/type_int.hpp \
+		glm/detail/setup.hpp \
+		glm/detail/type_float.hpp \
+		glm/detail/type_vec.hpp \
+		glm/detail/precision.hpp \
+		glm/detail/type_mat.hpp \
+		glm/vec2.hpp \
+		glm/detail/type_vec2.hpp \
+		glm/detail/_swizzle.hpp \
+		glm/detail/_swizzle_func.hpp \
+		glm/detail/type_vec2.inl \
+		glm/vec3.hpp \
+		glm/detail/type_vec3.hpp \
+		glm/detail/type_vec3.inl \
+		glm/vec4.hpp \
+		glm/detail/type_vec4.hpp \
+		glm/detail/type_vec4.inl \
+		glm/mat2x2.hpp \
+		glm/detail/type_mat2x2.hpp \
+		glm/detail/type_mat2x2.inl \
+		glm/mat2x3.hpp \
+		glm/detail/type_mat2x3.hpp \
+		glm/detail/type_mat2x3.inl \
+		glm/mat2x4.hpp \
+		glm/detail/type_mat2x4.hpp \
+		glm/detail/type_mat2x4.inl \
+		glm/mat3x2.hpp \
+		glm/detail/type_mat3x2.hpp \
+		glm/detail/type_mat3x2.inl \
+		glm/mat3x3.hpp \
+		glm/detail/type_mat3x3.hpp \
+		glm/detail/type_mat3x3.inl \
+		glm/mat3x4.hpp \
+		glm/detail/type_mat3x4.hpp \
+		glm/detail/type_mat3x4.inl \
+		glm/mat4x2.hpp \
+		glm/detail/type_mat4x2.hpp \
+		glm/detail/type_mat4x2.inl \
+		glm/mat4x3.hpp \
+		glm/detail/type_mat4x3.hpp \
+		glm/detail/type_mat4x3.inl \
+		glm/mat4x4.hpp \
+		glm/detail/type_mat4x4.hpp \
+		glm/detail/type_mat4x4.inl \
+		glm/trigonometric.hpp \
+		glm/detail/func_trigonometric.hpp \
+		glm/detail/func_trigonometric.inl \
+		glm/detail/_vectorize.hpp \
+		glm/detail/type_vec1.hpp \
+		glm/detail/type_vec1.inl \
+		glm/exponential.hpp \
+		glm/detail/func_exponential.hpp \
+		glm/detail/func_exponential.inl \
+		glm/detail/func_vector_relational.hpp \
+		glm/detail/func_vector_relational.inl \
+		glm/common.hpp \
+		glm/detail/func_common.hpp \
+		glm/detail/func_common.inl \
+		glm/packing.hpp \
+		glm/detail/func_packing.hpp \
+		glm/detail/func_packing.inl \
+		glm/detail/type_half.hpp \
+		glm/detail/type_half.inl \
+		glm/geometric.hpp \
+		glm/detail/func_geometric.hpp \
+		glm/detail/func_geometric.inl \
+		glm/matrix.hpp \
+		glm/detail/func_matrix.hpp \
+		glm/detail/func_matrix.inl \
+		glm/vector_relational.hpp \
+		glm/integer.hpp \
+		glm/detail/func_integer.hpp \
+		glm/detail/func_integer.inl \
+		glm/gtc/matrix_transform.hpp \
+		glm/gtc/constants.hpp \
+		glm/gtc/constants.inl \
+		glm/gtc/matrix_transform.inl \
+		Model/model.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o MyForm.o MyForm.cpp
 
 MyGLWidget.o: MyGLWidget.cpp MyGLWidget.h \
