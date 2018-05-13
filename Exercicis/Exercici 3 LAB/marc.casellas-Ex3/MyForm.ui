@@ -1,0 +1,308 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MyForm</class>
+ <widget class="QWidget" name="MyForm">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>568</width>
+    <height>403</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <layout class="QGridLayout" name="gridLayout">
+   <item row="0" column="0">
+    <layout class="QVBoxLayout" name="verticalLayout_2">
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout_2">
+       <item>
+        <widget class="QLCDNumber" name="lcdNumber">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Minimum">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">color: rgb(0, 0, 0);</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLCDNumber" name="lcdNumber_2">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Minimum">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">color: rgb(0, 0, 0);</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout">
+       <item>
+        <widget class="QDial" name="dial_2">
+         <property name="maximum">
+          <number>23</number>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QDial" name="dial">
+         <property name="maximum">
+          <number>59</number>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout_3">
+       <item>
+        <widget class="MyLabel" name="label">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">background-color: rgb(255, 0, 0);
+color: rgb(255, 255, 255);</string>
+         </property>
+         <property name="text">
+          <string>Alarma Desactivada</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <layout class="QVBoxLayout" name="verticalLayout">
+         <item>
+          <widget class="QRadioButton" name="radioButton">
+           <property name="text">
+            <string>ON</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QRadioButton" name="radioButton_2">
+           <property name="text">
+            <string>OFF</string>
+           </property>
+           <property name="checked">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="pushButton">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="text">
+            <string>Reset</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+      </layout>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>MyLabel</class>
+   <extends>QLabel</extends>
+   <header>MyLabel.h</header>
+   <slots>
+    <signal>activaCheck(bool)</signal>
+    <signal>assignaZero(QString)</signal>
+    <slot>activarAlarma()</slot>
+    <slot>rebreHora(int)</slot>
+    <slot>rebreMinut(int)</slot>
+    <slot>reset()</slot>
+    <slot>desactivarAlarma()</slot>
+   </slots>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>dial</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>lcdNumber_2</receiver>
+   <slot>display(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>428</x>
+     <y>223</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>437</x>
+     <y>72</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>dial_2</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>lcdNumber</receiver>
+   <slot>display(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>205</x>
+     <y>208</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>151</x>
+     <y>72</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>radioButton</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>label</receiver>
+   <slot>activarAlarma()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>320</x>
+     <y>289</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>279</x>
+     <y>289</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>label</sender>
+   <signal>activaCheck(bool)</signal>
+   <receiver>radioButton_2</receiver>
+   <slot>setChecked(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>213</x>
+     <y>350</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>315</x>
+     <y>318</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>dial_2</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>label</receiver>
+   <slot>rebreHora(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>175</x>
+     <y>227</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>131</x>
+     <y>335</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>dial</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>label</receiver>
+   <slot>rebreMinut(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>401</x>
+     <y>235</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>241</x>
+     <y>283</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton</sender>
+   <signal>clicked()</signal>
+   <receiver>label</receiver>
+   <slot>reset()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>361</x>
+     <y>360</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>283</x>
+     <y>362</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>label</sender>
+   <signal>assignaZero(QString)</signal>
+   <receiver>lcdNumber</receiver>
+   <slot>display(QString)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>76</x>
+     <y>308</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>76</x>
+     <y>104</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>label</sender>
+   <signal>assignaZero(QString)</signal>
+   <receiver>lcdNumber_2</receiver>
+   <slot>display(QString)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>30</x>
+     <y>307</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>316</x>
+     <y>101</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>radioButton_2</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>label</receiver>
+   <slot>desactivarAlarma()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>353</x>
+     <y>314</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>261</x>
+     <y>314</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>
