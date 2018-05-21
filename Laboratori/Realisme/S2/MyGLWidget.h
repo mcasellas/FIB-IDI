@@ -64,6 +64,8 @@ class MyGLWidget : public QOpenGLWidget, protected QOpenGLFunctions_3_3_Core
 
     glm::mat4 View;
 
+    bool esFocusdePosicio;
+
 
     // model
     Model patr;

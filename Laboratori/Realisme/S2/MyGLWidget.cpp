@@ -29,6 +29,7 @@ void MyGLWidget::initializeGL ()
   iniEscena();
   iniCamera();
 
+  esFocusdePosicio = true;
 
   posF = glm::vec3(1,1,1);
   posicioFocus();
@@ -38,8 +39,9 @@ void MyGLWidget::initializeGL ()
 
 void MyGLWidget::posicioFocus() {
     glm::vec4 posi;
-    posi = (View * glm::vec4(posF,1.0));
-    glUniform4fv (colFocusLoc, 1, &posi[0]);
+    if (esFocusdePosicio) posi = (View * glm::vec4(posF,1.0));
+    else posi = glm::vec4(posF,1.0);
+    glUniform4fv (posFocusLoc, 1, &posi[0]);
 }
 
 void MyGLWidget::colorFocus() {
@@ -354,7 +356,7 @@ void MyGLWidget::calculaCapsaModel ()
     if (patr.vertices()[i+2] < minz)
       minz = patr.vertices()[i+2];
     if (patr.vertices()[i+2] > maxz)
-      maxz = patr.vertices()[i+2];
+    maxz = patr.vertices()[i+2];
   }
   escala = 2.0/(maxy-miny);
   centrePatr[0] = (minx+maxx)/2.0; centrePatr[1] = (miny+maxy)/2.0; centrePatr[2] = (minz+maxz)/2.0;
@@ -364,10 +366,17 @@ void MyGLWidget::keyPressEvent(QKeyEvent* event)
 {
   makeCurrent();
   switch (event->key()) {
+
+    case Qt::Key_F: { // Canviar entre focus de posició a focus de càmera
+        esFocusdePosicio = not esFocusdePosicio;
+        posicioFocus();
+        break;
+    }
+
     case Qt::Key_O: { // canvia òptica entre perspectiva i axonomètrica
-      perspectiva = !perspectiva;
-      projectTransform ();
-      break;
+        perspectiva = !perspectiva;
+        projectTransform ();
+        break;
     }
 
     case Qt::Key_K: { // canvia òptica entre perspectiva i axonomètrica
@@ -378,8 +387,8 @@ void MyGLWidget::keyPressEvent(QKeyEvent* event)
     }
 
     case Qt::Key_L: { // canvia òptica entre perspectiva i axonomètrica
-        posF.x += 0.1;
-        posicioFocus();
+    posF.x += 0.1;
+    posicioFocus();
 
         break;
     }
