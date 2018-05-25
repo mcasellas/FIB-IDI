@@ -60,7 +60,7 @@ void MyGLWidget::resizeGL (int w, int h) {
 
   if (w < h) FOV = 2.0*atan(tan(ang_ini)/rav);
   else FOV = 2*ang_ini;
-  
+
   projectTransform();
 
 }
