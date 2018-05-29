@@ -96,6 +96,7 @@ class MyGLWidget : public QOpenGLWidget, protected QOpenGLFunctions_3_3_Core
 
     glm::vec3 CentreESC;
     glm::vec3 VRP;
+    glm::vec3 OBS;
     glm::vec3 UP;
 
 

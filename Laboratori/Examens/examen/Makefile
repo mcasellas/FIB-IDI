@@ -35,7 +35,7 @@ MOVE          = mv -f
 TAR           = tar -cf
 COMPRESS      = gzip -9f
 DISTNAME      = examen1.0.0
-DISTDIR = /Users/marccasellas/GitHub/FIB-IDI/Laboratori/examen/.tmp/examen1.0.0
+DISTDIR = /Users/marccasellas/GitHub/FIB-IDI/Laboratori/Examens/examen/.tmp/examen1.0.0
 LINK          = /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++
 LFLAGS        = -stdlib=libc++ -headerpad_max_install_names $(EXPORT_ARCH_ARGS) -Wl,-syslibroot,/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk -mmacosx-version-min=10.10 -Wl,-rpath,@executable_path/Frameworks
 LIBS          = $(SUBLIBS) -F/usr/local/Cellar/qt/5.10.1/lib -framework QtOpenGL -framework QtWidgets -framework QtGui -framework QtCore -framework DiskArbitration -framework IOKit -framework OpenGL -framework AGL 
@@ -812,7 +812,7 @@ moc_MyForm.cpp: ui_MyForm.h \
 		MyForm.h \
 		moc_predefs.h \
 		/usr/local/Cellar/qt/5.10.1/bin/moc
-	/usr/local/Cellar/qt/5.10.1/bin/moc $(DEFINES) --include ./moc_predefs.h -I/usr/local/Cellar/qt/5.10.1/mkspecs/macx-clang -I/Users/marccasellas/GitHub/FIB-IDI/Laboratori/examen -I/usr/include/glm -I/Users/marccasellas/GitHub/FIB-IDI/Laboratori/examen/Model -I/usr/local/Cellar/qt/5.10.1/lib/QtOpenGL.framework/Headers -I/usr/local/Cellar/qt/5.10.1/lib/QtWidgets.framework/Headers -I/usr/local/Cellar/qt/5.10.1/lib/QtGui.framework/Headers -I/usr/local/Cellar/qt/5.10.1/lib/QtCore.framework/Headers -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/9.1.0/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/usr/include -F/usr/local/Cellar/qt/5.10.1/lib MyForm.h -o moc_MyForm.cpp
+	/usr/local/Cellar/qt/5.10.1/bin/moc $(DEFINES) --include ./moc_predefs.h -I/usr/local/Cellar/qt/5.10.1/mkspecs/macx-clang -I/Users/marccasellas/GitHub/FIB-IDI/Laboratori/Examens/examen -I/usr/include/glm -I/Users/marccasellas/GitHub/FIB-IDI/Laboratori/Examens/examen/Model -I/usr/local/Cellar/qt/5.10.1/lib/QtOpenGL.framework/Headers -I/usr/local/Cellar/qt/5.10.1/lib/QtWidgets.framework/Headers -I/usr/local/Cellar/qt/5.10.1/lib/QtGui.framework/Headers -I/usr/local/Cellar/qt/5.10.1/lib/QtCore.framework/Headers -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/9.1.0/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/usr/include -F/usr/local/Cellar/qt/5.10.1/lib MyForm.h -o moc_MyForm.cpp
 
 moc_MyGLWidget.cpp: /usr/local/Cellar/qt/5.10.1/lib/QtGui.framework/Headers/QOpenGLFunctions_3_3_Core \
 		/usr/local/Cellar/qt/5.10.1/lib/QtGui.framework/Headers/qopenglfunctions_3_3_core.h \
@@ -908,7 +908,7 @@ moc_MyGLWidget.cpp: /usr/local/Cellar/qt/5.10.1/lib/QtGui.framework/Headers/QOpe
 		MyGLWidget.h \
 		moc_predefs.h \
 		/usr/local/Cellar/qt/5.10.1/bin/moc
-	/usr/local/Cellar/qt/5.10.1/bin/moc $(DEFINES) --include ./moc_predefs.h -I/usr/local/Cellar/qt/5.10.1/mkspecs/macx-clang -I/Users/marccasellas/GitHub/FIB-IDI/Laboratori/examen -I/usr/include/glm -I/Users/marccasellas/GitHub/FIB-IDI/Laboratori/examen/Model -I/usr/local/Cellar/qt/5.10.1/lib/QtOpenGL.framework/Headers -I/usr/local/Cellar/qt/5.10.1/lib/QtWidgets.framework/Headers -I/usr/local/Cellar/qt/5.10.1/lib/QtGui.framework/Headers -I/usr/local/Cellar/qt/5.10.1/lib/QtCore.framework/Headers -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/9.1.0/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/usr/include -F/usr/local/Cellar/qt/5.10.1/lib MyGLWidget.h -o moc_MyGLWidget.cpp
+	/usr/local/Cellar/qt/5.10.1/bin/moc $(DEFINES) --include ./moc_predefs.h -I/usr/local/Cellar/qt/5.10.1/mkspecs/macx-clang -I/Users/marccasellas/GitHub/FIB-IDI/Laboratori/Examens/examen -I/usr/include/glm -I/Users/marccasellas/GitHub/FIB-IDI/Laboratori/Examens/examen/Model -I/usr/local/Cellar/qt/5.10.1/lib/QtOpenGL.framework/Headers -I/usr/local/Cellar/qt/5.10.1/lib/QtWidgets.framework/Headers -I/usr/local/Cellar/qt/5.10.1/lib/QtGui.framework/Headers -I/usr/local/Cellar/qt/5.10.1/lib/QtCore.framework/Headers -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/9.1.0/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/usr/include -F/usr/local/Cellar/qt/5.10.1/lib MyGLWidget.h -o moc_MyGLWidget.cpp
 
 compiler_moc_objc_header_make_all:
 compiler_moc_objc_header_clean:

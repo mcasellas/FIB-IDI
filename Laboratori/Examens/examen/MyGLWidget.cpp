@@ -57,7 +57,10 @@ void MyGLWidget::iniEscena () {
     zNear = d-radiEsc;
     zFar = d+radiEsc;
 
-    VRP = CentreESC;
+    //VRP = CentreESC;
+    VRP = glm::vec3(1,-0.375,0);
+
+    OBS = glm::vec3(-1,1,-1);
     UP = glm::vec3(0.0f,1.0f,0.0f);
 
     angleROT = 0;
@@ -442,6 +445,8 @@ void MyGLWidget::viewTransform ()
     View = glm::rotate(View, -angleY, glm::vec3(0, 1, 0));
     View = glm::translate(View, -VRP);
     */
+
+    View = glm::lookAt(OBS, VRP, UP);
 
     glUniformMatrix4fv (viewLoc, 1, GL_FALSE, &View[0][0]);
 }
