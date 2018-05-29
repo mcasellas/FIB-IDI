@@ -2,7 +2,7 @@
 
 > Teoria: Marta Fairén
 >
-> Laboratori: Àlex Ríos
+> Laboratori: Àlex Ríos [(Prezis útils)](https://prezi.com/user/hm4ixu5z7pp3/)
 
 ## Evaluació:
 
