@@ -51,10 +51,11 @@ void MyGLWidget::iniEscena () {
     d = radiEsc*2;
 
     ang_ini = asin(radiEsc/d);
-    FOV = 2*ang_ini;
+    //FOV = 2*ang_ini;
+    FOV = float(M_PI)/3;
 
     raw = 1.0;
-    zNear = d-radiEsc;
+    zNear = 0.1;
     zFar = d+radiEsc;
 
     //VRP = CentreESC;
@@ -514,6 +515,13 @@ void MyGLWidget::keyPressEvent(QKeyEvent* event)
 
         case Qt::Key_R: {
             angleROT += float(M_PI)/6;
+            
+            glm::mat4 mat(1.f);
+             glm::vec4 RotacioCamera = glm::rotate(mat, float(M_PI/6.0), glm::vec3(0, 1, 0))*glm::vec4(VRP,1.f);
+
+			VRP = glm::vec3(RotacioCamera.x, RotacioCamera.y, RotacioCamera.z);
+            
+            
             viewTransform();
             break;
         }
