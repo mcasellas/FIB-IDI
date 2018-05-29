@@ -71,6 +71,8 @@ class MyGLWidget : public QOpenGLWidget, protected QOpenGLFunctions_3_3_Core
     // attribute locations
     GLuint vertexLoc, normalLoc, matambLoc, matdiffLoc, matspecLoc, matshinLoc;
     GLuint posFocusLoc, colFocusLoc, llumAmbientLoc;
+
+    GLuint pintarvaca;
     // model
     Model patr;
     Model vaca;

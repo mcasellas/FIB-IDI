@@ -16,6 +16,12 @@ uniform mat4 proj;
 uniform mat4 view;
 uniform mat4 TG;
 
+uniform int calpintarvaca;
+
+vec3 matamblocal;
+vec3 matdifflocal;
+vec3 matspeclocal;
+
 
 /*
 vec3 colFocus = vec3(0.8, 0.8, 0.8);
@@ -30,11 +36,11 @@ vec3 Lambert (vec3 NormSCO, vec3 L)
     // S'assumeix que els vectors que es reben com a paràmetres estan normalitzats
 
     // Inicialitzem color a component ambient
-    vec3 colRes = llumAmbient * matamb;
+    vec3 colRes = llumAmbient * matamblocal;
 
     // Afegim component difusa, si n'hi ha
     if (dot (L, NormSCO) > 0)
-      colRes = colRes + colFocus * matdiff * dot (L, NormSCO);
+      colRes = colRes + colFocus * matdifflocal * dot (L, NormSCO);
     return (colRes);
 }
 
@@ -57,10 +63,20 @@ vec3 Phong (vec3 NormSCO, vec3 L, vec4 vertSCO)
 
     // Afegim la component especular
     float shine = pow(max(0.0, dot(R, V)), matshin);
-    return (colRes + matspec * colFocus * shine);
+    return (colRes + matspeclocal * colFocus * shine);
 }
 
 void main() {
+
+    matamblocal = matamb;
+    matdifflocal = matdiff;
+    matamblocal = matamb;
+
+    if (calpintarvaca == 1) {
+        matspeclocal = vec3(1.0,1.0,1.0);
+        matdifflocal = vec3(0.752941,0.752941,0.752941);
+        matamblocal = vec3(0.752941,0.752941,0.752941); // color gris
+    }
 
     vec4 vertexSCO = view*TG*vec4(vertex, 1.0); // Vèrtex
     mat3 normalMatrix = inverse(transpose(mat3(view*TG))); // Normal

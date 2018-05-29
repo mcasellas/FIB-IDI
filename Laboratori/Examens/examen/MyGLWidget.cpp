@@ -51,11 +51,14 @@ void MyGLWidget::iniEscena () {
     d = radiEsc*2;
 
     ang_ini = asin(radiEsc/d);
-    FOV = 2*ang_ini;
+    //FOV = 2*ang_ini;
+    FOV = float(M_PI)/3.0;
 
     raw = 1.0;
-    zNear = d-radiEsc;
-    zFar = d+radiEsc;
+    zNear = 0.1;
+    zFar = 7.0;
+    //zNear = d-radiEsc;
+    //zFar = d+radiEsc;
 
     //VRP = CentreESC;
     VRP = glm::vec3(1,-0.375,0);
@@ -88,7 +91,7 @@ void MyGLWidget::posicioFocus() {
 }
 
 void MyGLWidget::colorFocus() {
-    glm::vec3 colF = glm::vec3(0,1,1);
+    glm::vec3 colF = glm::vec3(1,1,1);
     glUniform3fv (colFocusLoc, 1, &colF[0]);
 }
 
@@ -104,17 +107,23 @@ void MyGLWidget::paintGL ()
 
     // Activem el VAO per a pintar el terra
     glBindVertexArray (VAO_Terra);
-
+    int con = 0;
+    glUniform1i(pintarvaca, con);
     modelTransformTerra ();
 
     // pintem
     glDrawArrays(GL_TRIANGLES, 0, 12);
 
     // Activem el VAO per a pintar el Patricio
+     con = 1;
+    glUniform1i(pintarvaca, con);
+
     glBindVertexArray (VAO_Vaca);
     modelTransformVaca();
     glDrawArrays(GL_TRIANGLES, 0, vaca.faces().size()*3);
 
+     con = 0;
+    glUniform1i(pintarvaca, con);
     glBindVertexArray (VAO_Patr);
     modelTransformPatricio();
     glDrawArrays(GL_TRIANGLES, 0, patr.faces().size()*3);
@@ -395,6 +404,8 @@ void MyGLWidget::carregaShaders(){
     posFocusLoc = glGetUniformLocation (program->programId(), "posFocus");
     colFocusLoc = glGetUniformLocation (program->programId(), "colFocus");
     llumAmbientLoc = glGetUniformLocation (program->programId(), "llumAmbient");
+
+    pintarvaca = glGetUniformLocation (program->programId(), "calpintarvaca");
 }
 
 void MyGLWidget::modelTransformPatricio (){
@@ -413,6 +424,7 @@ void MyGLWidget::modelTransformVaca ()
     TG = glm::translate(TG, glm::vec3(1,-0.75,0));
     TG = glm::scale(TG, glm::vec3(escalaVaca, escalaVaca, escalaVaca));
     TG = glm::rotate(TG, -float(M_PI)/2, glm::vec3(1,0,0));
+    TG = glm::rotate(TG, -float(M_PI)/2, glm::vec3(0,0,1));
     TG = glm::translate(TG, -centreVaca);
 
     glUniformMatrix4fv (transLoc, 1, GL_FALSE, &TG[0][0]);
@@ -513,7 +525,15 @@ void MyGLWidget::keyPressEvent(QKeyEvent* event)
         }
 
         case Qt::Key_R: {
-            angleROT += float(M_PI)/6;
+            angleROT -= float(M_PI)/6;
+
+            glm::mat4 mat(1.f);
+            glm::vec4 RotacioCamera = glm::rotate(mat, -float(M_PI/6.0), glm::vec3(0, 1, 0))*glm::vec4(VRP,1.f);
+
+            VRP = glm::vec3(RotacioCamera.x, RotacioCamera.y, RotacioCamera.z);
+
+
+
             viewTransform();
             break;
         }
